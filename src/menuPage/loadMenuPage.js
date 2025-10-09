@@ -74,7 +74,7 @@ function loadMenuPage() {
     const heading = createHeading('Our Menu', 'h1', 'menu-heading');
 
     const menuItems = [
-        { name: '2 Tacos', price: '$6.00', img: tacoImg },
+        { name: '2 Tacos', price: '$4.00', img: tacoImg },
         { name: 'Burrito', price: '$8.00', img: burritoImg },
         { name: 'Tamale', price: '$3.50', img: tamaleImg },
         { name: 'Aguas Frescas', price: '$2.50', img: aguaImg }
