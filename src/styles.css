@@ -17,30 +17,106 @@ body {
 /* Header and Navigation */
 header {
     background: linear-gradient(to right, #006847, #ffffff, #ce1126);
-    padding: 1rem 0;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    padding: 0.75rem 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    border-bottom: 4px solid #8B5E3C; /* full-width brown border */
 }
 
+/* Keep nav as a layout shell; .nav-container constrains inner width */
 nav {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
+    display: block;
 }
 
+.nav-container {
+    width: 95%;
+    max-width: 1200px; /* constrain on large screens */
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.25rem 0;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+}
+
+/* Keep aspect ratio using max-height instead of fixed width */
+#logo {
+    max-height: 56px;
+    height: auto;
+    width: auto;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #8B5E3C;
+}
+
+.nav-center {
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+/* Responsive title size and improved contrast on the gradient */
+.restaurant-name {
+    font-size: clamp(1.05rem, 2.2vw, 2rem);
+    /* slightly darker brown text for character, with a translucent brown backdrop for readability */
+    color: #5A3F2A; /* darker brown */
+    margin: 0;
+    letter-spacing: 1px;
+    line-height: 1;
+    display: inline-block; /* allows padding/background to hug the text */
+    padding: 0.12rem 0.6rem;
+    border-radius: 6px;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.04);
+}
+
+.nav-right {
+    display: flex;
+    gap: 0.75rem;
+    flex: 0 0 auto;
+    align-items: center;
+}
+
+/* Scoped button styles for nav buttons */
+.nav-right button,
 nav button {
-    background-color: #fff;
+    background-color: #ffffff;
     border: 2px solid #006847;
     color: #006847;
-    padding: 0.6rem 1.2rem;
+    padding: 0.5rem 0.9rem;
     border-radius: 25px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform 0.18s ease, background-color 0.18s ease, color 0.18s ease;
 }
 
-nav button:hover {
+/* Hover and keyboard focus styles for accessibility */
+.nav-right button:hover,
+.nav-right button:focus {
     background-color: #ce1126;
     border-color: #ce1126;
-    color: #fff;
-    transform: scale(1.05);
+    color: #ffffff;
+    transform: translateY(-2px);
+    outline: none;
+}
+
+.nav-right button:focus-visible {
+    box-shadow: 0 0 0 3px rgba(0,104,71,0.18);
+}
+
+/* Keep left/center/right items aligned and prevent awkward wrapping */
+.nav-left, .nav-center, .nav-right {
+    display: flex;
+    align-items: center;
+}
+
+/* Responsive: hide logo and reduce spacing on small screens */
+@media (max-width: 700px) {
+    #logo { display: none; }
+    .restaurant-name { font-size: 1.05rem; }
+    .nav-right button { padding: 0.4rem 0.7rem; font-size: 0.95rem; }
+    .nav-container { gap: 0.5rem; }
 }
