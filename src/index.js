@@ -1,6 +1,6 @@
-import loadMenuPage from "./loadMenuPage";
-import loadHomePage from "./loadHomePage";
-import loadAboutPage from "./loadAboutPage";
+import loadMenuPage from "./menuPage/loadMenuPage";
+import loadHomePage from "./homePage/loadHomePage";
+import loadAboutPage from "./aboutPage/loadAboutPage";
 import "./styles.css";
 
 const homeBtn = document.getElementById("home-btn");

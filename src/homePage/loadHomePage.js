@@ -1,4 +1,4 @@
-import restaurantImage from './restaurant.jpg';
+import restaurantImage from '../assets/restaurant.jpg';
 import "./homeStyles.css";
 
 function loadHomePage() {
