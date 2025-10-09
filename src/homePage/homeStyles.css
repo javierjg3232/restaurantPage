@@ -6,7 +6,7 @@
     background: linear-gradient(to right, #006847, #ffffff, #ce1126);
 }
 
-#content h1 {
+.home-heading {
     font-size: 2.5rem;
     color: #006847; /* Mexican green */
     margin-bottom: 1rem;
@@ -14,13 +14,13 @@
     letter-spacing: 2px;
 }
 
-#content p {
+.home-paragraph {
     font-size: 1.2rem;
     color: #ce1126;
     margin-bottom: 2rem;
 }
 
-#content img {
+.home-image {
     width: 80%;
     max-width: 600px;
     border-radius: 15px;
@@ -29,7 +29,7 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#content img:hover {
+.home-image:hover {
     transform: scale(1.03);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
 }
