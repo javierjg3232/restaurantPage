@@ -1,3 +1,5 @@
+import "./aboutStyles.css";
+
 function loadAboutPage() {
     const content = document.getElementById('content');
     content.textContent = '';

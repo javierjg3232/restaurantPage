@@ -1,3 +1,5 @@
+import "./menuStyles.css";
+
 function loadMenuPage() {
     const content = document.getElementById('content');
     content.textContent = '';

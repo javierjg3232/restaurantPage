@@ -1,6 +1,7 @@
-import restaruntImage from './restaurant.jpg';
+import restaurantImage from './restaurant.jpg';
+import "./homeStyles.css";
 
-function initialPageLoad() {
+function loadHomePage() {
     const content = document.getElementById('content');
     content.textContent = '';
     const heading = document.createElement('h1');
@@ -8,7 +9,7 @@ function initialPageLoad() {
     const paragraph = document.createElement('p');
     paragraph.textContent = 'Experience the best dining with us!';
     const image = document.createElement('img');
-    image.src = restaruntImage;
+    image.src = restaurantImage;
     image.alt = 'Restaurant Image';
 
     content.appendChild(heading);
@@ -16,4 +17,4 @@ function initialPageLoad() {
     content.appendChild(image);
 }
 
-export default initialPageLoad;
+export default loadHomePage;
