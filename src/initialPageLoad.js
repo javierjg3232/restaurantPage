@@ -2,6 +2,7 @@ import restaruntImage from './restaurant.jpg';
 
 function initialPageLoad() {
     const content = document.getElementById('content');
+    content.textContent = '';
     const heading = document.createElement('h1');
     heading.textContent = 'Welcome to Our Restaurant';
     const paragraph = document.createElement('p');
