@@ -37,7 +37,6 @@
     align-items: flex-start;
     gap: 24px;
     margin-top: 20px;
-    align-items: flex-start; /* keep headings aligned to top */
     flex-wrap: wrap; /* allow wrapping on small screens */
 }
 
