@@ -1,27 +1,127 @@
-/* ===== About Page Styles ===== */
-.about-heading {
-    font-size: 2.5rem;
-    color: #006847; /* Mexican green */
+/* ===== About Page Styles (CSS Grid) ===== */
+.about-content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas: "history" "location";
+    gap: 1rem;
     margin-bottom: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+
+@media (min-width: 900px) {
+    .about-content-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+        grid-template-rows: 1fr;
+        grid-template-areas:
+            "history location";
+        align-items: start;
+    }
+}
+
+.history-container {
+    grid-area: history;
+}
+
+.location-container {
+    grid-area: location;
+}
+
+/* Block common styles */
+.about-grid-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 0.6rem;
+    text-align: center;
+    align-items: center;
+    align-self: stretch;
+    justify-self: stretch;
+    justify-content: start;
+}
+
+.about-grid-item .history-container {
+    height: 100%;
+}
+
+.about-heading {
+    font-size: clamp(1.75rem, 2.5vw + 1rem, 3rem);
+    color: #006847; /* Mexican green */
+    margin-bottom: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
+.about-subheading {
+    font-size: clamp(1rem, 1.2vw + 0.6rem, 2rem);
+    color: #006847;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    text-align: center;
+    font-weight: 700;
+}
+
+/* Paragraph boxes */
+.about-paragraph,
+.about-history {
+    font-size: clamp(1rem, 1.1vw + 0.8rem, 1.5rem);
+    box-sizing: border-box;
+    color: #f7f7f7;
+    line-height: 1.45;
+    background: rgba(90, 63, 42, 0.50);
+    border-radius: 8px;
+    padding: 0.9rem 1rem;
+    transition: transform 0.18s ease;
+}
+
 .about-paragraph {
-    font-size: 1.2rem;
-    color: #333;
-    margin-bottom: 1rem;
-    background-color: #f7f7f7;
-    border-left: 6px solid #ce1126; /* Red accent bar */
-    border-radius: 6px;
-    padding: 0.8rem 1rem;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease;
+    width: 90%;
 }
 
 .about-paragraph:hover {
-    transform: scale(1.03);
+    transform: translateY(-3px);
+}
+
+.about-history {
+    /* history can be a bit wider on narrow screens */
+    max-width: 100%;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    color: #f7f7f7;
+    font-size: clamp(1rem, 1.1vw + 0.8rem, 1.5rem);
+}
+
+.about-history-img {
+    width: 50%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    border: 3px solid rgba(0,0,0,0.04);
+}
+
+.history-card {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: start;
+    flex-grow: 1;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+    background: rgba(90, 63, 42, 0.50);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+/* Map image: responsive */
+.about-map {
+    display: block;
+    width: 90%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    border: 3px solid rgba(0,0,0,0.04);
 }
