@@ -102,9 +102,9 @@
     text-align: left;
 }
 
-/* accessibility focus */
-.hero-cta:focus-visible,
-button:focus-visible {
+/* accessibility focus (scoped to home hero to avoid global button overrides) */
+.home-hero .hero-cta:focus-visible,
+.home-hero button:focus-visible {
     box-shadow: 0 0 0 4px rgba(0, 104, 71, 0.18);
 }
 

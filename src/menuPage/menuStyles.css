@@ -1,4 +1,6 @@
 /* ===== Menu Page Styles ===== */
+
+/* Headings */
 .menu-heading {
     font-size: 2.5rem;
     color: #ce1126; /* Red from the Mexican flag */
@@ -7,59 +9,182 @@
     letter-spacing: 2px;
 }
 
-
-.menu-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 auto;
-    max-width: 400px;
-}
-
-.menu-item {
-    background-color: #006847; /* Mexican green */
-    color: #fff;
-    font-size: 1.2rem;
-    padding: 0.8rem;
-    margin: 0.5rem 0;
-    border-radius: 10px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.menu-item:hover {
-    background-color: #ce1126; /* Hover to red */
-    transform: scale(1.05);
-}
-
-/* Layout for meat and aguas sections to appear side-by-side on wide screens */
-.menu-options {
-    display: flex;
-    align-items: flex-start;
-    gap: 24px;
-    margin-top: 20px;
-    flex-wrap: wrap; /* allow wrapping on small screens */
-}
-
-.meat-options,
-.aguas-options {
-  flex: 1 1 320px; /* grow/shrink; prefer ~320px width each */
-  min-width: 260px;
-}
-
-.meat-heading, .aguas-heading {
+.meat-heading,
+.aguas-heading {
     font-size: 1.5rem;
     color: #ce1126;
     margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 1.5px;
 }
-
 .aguas-heading {
-    text-wrap: nowrap;
+    /* keep the heading on one line when there's room */
+    white-space: nowrap;
+}
+
+/* ===== Option lists (Meat / Aguas) ===== */
+/* The list fills its parent column and stacks items vertically. Use the helper
+   class `.menu-list.centered` to keep items narrow and centered. */
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    /* default: stretch items so they take the full column width */
+    align-items: stretch;
+}
+
+/* Optional helper: center and constrain list items inside the column */
+.menu-list.centered {
+    align-items: center;
+}
+.menu-list.centered .menu-item {
+    width: 80%;
+}
+
+/* Ensure lists inside option columns can use full width */
+.meat-options .menu-list,
+.aguas-options .menu-list {
+    max-width: none;
+}
+
+/* Menu item (single definition) */
+.menu-item {
+    background-color: #006847; /* Mexican green */
+    color: #fff;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 0.8rem;
+    margin: 0;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+    flex: 0 1 auto;
+}
+.menu-item:hover {
+    background-color: #ce1126; /* Hover to red */
+    transform: scale(1.05);
+}
+
+/* Helper to make all items in the list equal height */
+.menu-list.equal-heights {
+    align-items: stretch;
+}
+.menu-list.equal-heights .menu-item {
+    flex: 1 1 auto;
+}
+
+/* ===== Layout for meat and aguas sections ===== */
+.menu-options {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 24px;
+    margin-top: 20px;
+    /* default: allow wrapping so very small screens still work */
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.meat-options,
+.aguas-options {
+    /* let each section grow equally but allow the layout to shrink when needed */
+    flex: 1 1 320px;
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
 }
 
 @media (max-width: 640px) {
-  .menu-options {
+    .menu-options {
+        flex-direction: column;
+    }
+}
+
+/* Force meat/aguas to appear side-by-side on medium+ screens */
+@media (min-width: 700px) {
+    .menu-options {
+        flex-wrap: nowrap;
+        align-items: flex-start;
+    }
+    .meat-options,
+    .aguas-options {
+        min-width: 0; /* allow flex-basis to control sizing and prevent overflow */
+        max-width: 48%;
+    }
+}
+
+/* ===== Menu Card Styles (merged from menuCards.css) ===== */
+.menu-cards-container {
+    display: grid;
+    /* auto-fit with a slightly larger min width so cards sit side-by-side on most tablets/desktop
+       and gracefully wrap down to fewer columns on small screens */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 16px 0;
+    align-items: start;
+    /* ensure the grid can take the full width even when its parent centers items */
+    width: 100%;
+    align-self: stretch;
+}
+
+.menu-card {
+    background: #fff;
+    border: #006847 2px solid;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    padding: 12px;
+    text-align: center;
+    display: flex;
     flex-direction: column;
-  }
+    align-items: center;
+}
+
+/* Flexbox fallback when grid is unsupported */
+@supports not (display: grid) {
+    .menu-cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+    }
+    .menu-card {
+        flex: 1 1 220px;
+        max-width: 320px;
+    }
+}
+
+/* Strengthen grid behavior in case it's being constrained by a flex parent */
+@media (min-width: 560px) {
+    .menu-cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+}
+
+.menu-card-img {
+    width: 90%;
+    /* fixed-ish height with cover to keep visual cards consistent while filling the card area */
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: #ce1126 2px solid;
+}
+
+.menu-card-name {
+    margin: 8px 0 4px;
+    font-size: 1.05rem;
+}
+
+.menu-card-price {
+    margin: 0;
+    color: #2c2c2c;
+    font-weight: 600;
 }

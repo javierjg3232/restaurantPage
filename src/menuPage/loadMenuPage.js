@@ -1,5 +1,4 @@
 import "./menuStyles.css";
-import "./menuCards.css";
 import { tacoImg, burritoImg, tamaleImg, aguaImg } from '../assets';
 
 // Small helpers to keep DOM creation readable and reusable
@@ -54,7 +53,8 @@ function createListSection(title, items = [], sectionClass, headingClass) {
     section.appendChild(heading);
 
     const list = document.createElement('ul');
-    list.className = 'menu-list';
+    // use the centered helper so list items appear narrow and centered inside the option column
+    list.className = 'menu-list centered';
     items.forEach(name => {
         const li = document.createElement('li');
         li.className = 'menu-item';
