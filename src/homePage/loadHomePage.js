@@ -56,7 +56,9 @@ function createFeaturesGrid(items = []) {
         if (item.html) card.innerHTML = item.html;
         else {
             const h = createText('h3', item.title);
+            h.className = 'feature-card-title';
             const p = createText('p', item.text);
+            p.className = 'feature-card-text';
             card.appendChild(h);
             card.appendChild(p);
         }
@@ -87,8 +89,8 @@ function loadHomePage() {
         { title: 'Reviews', text: '★★★★☆ — "Amazing flavors and great service!"' }
     ]);
 
-    content.appendChild(hero);
     content.appendChild(features);
+    content.appendChild(hero);
 }
 
 export default loadHomePage;
